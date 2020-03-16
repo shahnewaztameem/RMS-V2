@@ -1,7 +1,7 @@
 # RMS V2
  Online restaurent reservation System using Node js
 ## Install
-download the repo and import the sql and then run ** npm i **
+download the repo and import the sql and then run **npm i**
 
 ## Features
 
@@ -12,8 +12,8 @@ download the repo and import the sql and then run ** npm i **
 - CRUD on every restaurant and to their menus
 - CRUD members
 - **Validation**
-- ** Password hasing **
+- **Password hasing**
 
 ## Language used
-- ** Express js **
-- ** MySql **
+- **Express js**
+- **MySql**
