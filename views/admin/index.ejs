@@ -1,0 +1,70 @@
+<%- include("../partials/admin/header") %>
+
+<div id="wrapper">
+  <!-- menu  -->
+  <%- include("../partials/admin/sidemenu") %>
+  <div id="page-wrapper">
+    <!-- panels   -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="text-center">
+          Welcome <strong><%= user_info.username.toUpperCase() %></strong>
+        </h1>
+        <h2 class="text-center">Profile information</h2>
+        <div class="col-md-offset-3 col-md-6 panel panel-info">
+          <table class="table table-bordered table-stripped table-hover text-center">
+            <tr>
+              <td>
+                <h4><strong>Username</strong></h4>
+              </td>
+              <td>
+                <h4><strong><%= user_info.username%></strong></h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>First name</strong></h4>
+              </td>
+              <td>
+                <h4><strong><%= user_info.user_firstname%></strong></h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>Last name</strong></h4>
+              </td>
+              <td>
+                <h4><strong><%= user_info.user_lastname%></strong></h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>Email</strong></h4>
+              </td>
+              <td>
+                <h4><strong><%= user_info.user_email%></strong></h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>User Role:</strong></h4>
+              </td>
+              <td>
+                <h4><strong><%= user_info.user_type%></strong></h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>User gender:</strong></h4>
+              </td>
+              <td>
+                <h4><strong><%= user_info.user_gender%></strong></h4>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include("../partials/admin/footer") %>

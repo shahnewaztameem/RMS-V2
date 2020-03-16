@@ -1,0 +1,28 @@
+<%- include("../partials/manager/header") %>
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include("../partials/manager/sidemenu") %>
+
+    <div id="page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center">Restaurants with individual items</h2>
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th>Restaurant name</th>
+                            <th>menu details</th>
+                        </tr>
+                        <% r_list.forEach((list) => { %>
+                        <tr>
+                            <td><%= list.r_name %> </td>
+                            <td><%= list.i_name %></td>
+                        </tr>
+                        <% }) %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("../partials/manager/footer") %>

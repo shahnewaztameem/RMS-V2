@@ -1,0 +1,79 @@
+<%- include ("../partials/header") %>
+
+<header class="bg-img">
+    <%- include ("../partials/navbar") %>
+    <div class="hero-section clearfix">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <div class="login-form">
+                        <div class="col-md-12 text-center" style="color: red; font-size: 20px;">
+                            <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
+                            <p class="bg-danger text-danger">
+                                <%=errors[i].msg%>
+                            </p>
+                            <%}}else if(success != null){%>
+                            <p class="bg-success text-success">
+                                <%= success%>
+                            </p>
+                            <%}%>
+                        </div>
+                        <h2 class="text-center">Register your account!</h2>
+                        <form action="/signup" method="post">
+
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" name="username"  placeholder="Enter username"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="firstname">Firstname</label>
+                                <input type="text" name="firstname"  placeholder="Enter firstname"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">Lastname</label>
+                                <input type="text" name="lastname"  placeholder="Enter lastname"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name="email"  placeholder="Enter email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="userType">User Type</label>
+                                <select name="user_type"  class="form-control">
+                                    <option value="admin">Admin</option>
+                                    <option value="manager">Manager</option>
+                                    <option value="member">Member</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password"  placeholder="Enter password"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" name="confirm_pass"  placeholder="Enter password again"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">User gender</label>
+                                <select name="u_gender"  class="form-control">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" type="submit" name="signup">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+<%- include ("../partials/footer")%>

@@ -1,0 +1,44 @@
+<%- include("../partials/manager/header") %>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <%- include("../partials/manager/sidemenu") %>
+  <div id="page-wrapper">
+    <!-- panels   -->
+    <div class="container">
+      <div class="row">
+        <h2 class="text-center">Contact emails from contacts</h2>
+        <div class="col-md-offset-3 col-md-6">
+          <table class="table table-bordered table-striped">
+            <tr>
+              <th>Id</th>
+              <th>Email</th>
+              <th>Message</th>
+            </tr>
+
+            <% for(var i = 0; i < user_info.length; i++){ %>
+            <% if(user_info.length > 1) { %>
+            <tr>
+              <td><%= user_info[i].id %></td>
+              <td><%= user_info[i].email %></td>
+              <td><%= user_info[i].message %></td>
+
+              
+            </tr>
+                  
+              
+            
+            <% } else {%>
+            <tr>
+              <td colspan="4" class="text-center">
+                <h2>No data found!</h2>
+              </td>
+            </tr>
+            <% }  }%>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("../partials/manager/footer") %>

@@ -1,0 +1,88 @@
+<style>
+    #clock {
+        font-family: 'Orbitron', sans-serif;
+        color: #66ff99;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 10px;
+        margin-right: 40px;
+    }
+
+    #clock::before {
+        content: "System time: ";
+    }
+</style>
+<!-- Sidebar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/home-admin"> Admin</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+            <li><a href="/home-admin"><i class="fa fa-dashboard"></i> <strong>Dashboard</strong></a></li>
+            <li><a data-toggle="modal" href='/home-admin/user_list'><strong><i class="fa fa-user"></i> Members
+                        List</strong></a></li>
+            <li><a data-toggle="modal" href='/home-admin/add_users'><strong><i class="fa fa-plus"></i> Add a new
+                        user</strong></a></li>
+            <li><a href='/home-admin/add_restaurants'><strong><i class="fa fa-plus"></i> Add Restaurant</strong></a>
+            </li>
+            <li> <a href='/home-admin/restaurants_list'><strong><i class="fa fa-list-alt"></i> Restaurants
+                        Lists</strong></a></li>
+            <li><a href='/home-admin/view-restaurant'><strong><i class="fa fa-home"></i> View Restaurants</strong></a>
+            </li>
+            <li><a href='/home-admin/all_reservations'><strong><i class="fa fa-list-alt"></i> View
+                        Reservations</strong></a></li>
+            <li><a href='/food-experience'><strong><i class="fa fa-heart"></i> Food reviews</strong></a></li>
+            <li><a href='/home-admin/contact_list'><strong><i class="fa fa-envelope-o"></i> Contact list</strong></a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right navbar-user">
+            <li>
+                <div id="clock"></div>
+            </li>
+            <li class="dropdown user-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                    <%= username%> <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li> <a href='/home-admin/admin-edit_account'>Edit Account</a></li>
+                    <li><a href="#"><a href='/logout'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+
+            </li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+<script>
+    function currentTime() {
+        var date = new Date(); /* creating object of Date class */
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+        hour = updateTime(hour);
+        min = updateTime(min);
+        sec = updateTime(sec);
+        document.getElementById("clock").innerText = hour + " : " + min + " : " + sec; /* adding time to the div */
+        var t = setTimeout(function () {
+            currentTime()
+        }, 1000); /* setting timer */
+    }
+
+    function updateTime(k) {
+        if (k < 10) {
+            return "0" + k;
+        } else {
+            return k;
+        }
+    }
+
+    currentTime();
+</script>

@@ -1,0 +1,70 @@
+<%- include("../partials/admin/header") %>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include("../partials/admin/sidemenu") %>
+    <div id="page-wrapper">
+        <h2 class="text-center">All reservation List</h2>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>ID</th>
+                <th>User Id</th>
+                <th>Username</th>
+                <th>User Email</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Phone No</th>
+                <th>guest count</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <% if(reservation_details.length != null) { %>
+            <% reservation_details.forEach((reservation) => { %>
+            <tr>
+                <td><%= reservation.id %></td>
+                <td><%= reservation.u_id %></td>
+                <td><%= reservation.u_name %></td>
+                <td><%= reservation.u_email %></td>
+                <td><%= reservation.date %></td>
+                <td><%= reservation.time %></td>
+                <td><%= reservation.phone_no %></td>
+                <td><%= reservation.total_guest %></td>
+                <td class="text-primary" style="text-transform: uppercase;"><strong><%= reservation.status %></strong></td>
+                <td>
+                    <a href="/home-admin/reservation_edit/<%= reservation.id %>" class="btn btn-primary btn-sm">Edit</a>
+                      <a data-toggle="modal" href="#myModal<%= reservation.id %>" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal<%=reservation.id %>" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                          aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Delete Confirmation!</h4>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure you want to delete?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <a type="button" class="btn btn-danger" href="/home-admin/delete_reservation/<%=reservation.id%>">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <% }) } else { %>
+                <h2 class="text-danger">No record found!!</h2>
+             <% } %>
+
+
+        </table>
+
+    </div>
+
+
+    <%- include("../partials/admin/footer") %>

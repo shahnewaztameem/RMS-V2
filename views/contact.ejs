@@ -1,0 +1,43 @@
+<%- include ("partials/header") %>
+<header class="reservation-img">
+	<%- include ("partials/navbar")%>
+
+	<div class="hero-section clearfix">
+		<h1 class="text-center">Contact Us</h1>
+	</div>
+</header>
+<section class="user-profile text-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center" style="color: red; font-size: 20px;">
+                <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
+                    <p>
+                        <%=errors[i].msg%>
+                    </p>
+                    <%}}else if(success != null){%>
+                        <p style="color: #ff0000;">
+                            <%= success%>
+                        </p>
+                        <%}%>
+            </div>
+			<div class="col-md-12 ">
+
+				<form action="" method="post">
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" placeholder="Enter email" class="form-control" name="email">
+					</div>
+					<div class="form-group">
+						<label for="message">Message</label>
+						<textarea name="message" id="" cols="30" rows="10" class="form-control"></textarea>
+					</div>
+					<input type="submit" value="Send Message" class="btn btn-danger btn-sm" id="msg-success">
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include ("partials/footer") %>

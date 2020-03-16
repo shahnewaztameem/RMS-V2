@@ -1,0 +1,148 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blank Page customer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+
+    <!-- Add custom CSS here -->
+    <link href="/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  </head>
+
+  <body>
+
+
+  <%- include ("../partials/header"); %>
+
+  <header class="bg-img">
+    <div class="nav-wrapper clearfix">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="images/nav-logo.png" alt=""></a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/home-member">home</a></li>
+              <li><a href="/menu">menu</a></li>
+              <li><a href="/reservation">reservation</a></li>
+              <li><a href='/food-experience'>Food Experience</a></li>
+              <li><a href="/about">about</a></li>
+              <li><a href="/contact">contact</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              <li> <a href='/home-member/member-edit_account'>Edit Account</a></li>
+
+              <li><a href='/logout'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+              
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+
+    
+      <div id="page-wrapper">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="text-center">
+              Welcome <strong><%= user_info.user_firstname.toUpperCase() %></strong>
+            </h1>
+            <h2 class="text-center">Profile information</h2>
+            <div class="col-md-offset-3 col-md-6">
+
+   <font color="cyan">           
+              <table class="table table-bordered table-stripped table-hover text-center">
+                <tr>
+                  <td>
+                    <h4><strong>Username</strong></h4>
+                  </td>
+                  <td>
+                    <h4><strong><%= user_info.username%></strong></h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h4><strong>First name</strong></h4>
+                  </td>
+                  <td>
+                    <h4><strong><%= user_info.user_firstname%></strong></h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h4><strong>Last name</strong></h4>
+                  </td>
+                  <td>
+                    <h4><strong><%= user_info.user_lastname%></strong></h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h4><strong>Email</strong></h4>
+                  </td>
+                  <td>
+                    <h4><strong><%= user_info.user_email%></strong></h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h4><strong>User Role:</strong></h4>
+                  </td>
+                  <td>
+                    <h4><strong><%= user_info.user_type%></strong></h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h4><strong>User gender:</strong></h4>
+                  </td>
+                  <td>
+                    <h4><strong><%= user_info.user_gender%></strong></h4>
+                  </td>
+                </tr>
+              </table>
+  </font>  
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.js"></script>
+
+
+    <div class="hero-section clearfix">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+
+          
+  </body>
+
+  </html>

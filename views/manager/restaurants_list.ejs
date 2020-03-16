@@ -1,0 +1,139 @@
+<%- include("../partials/manager/header") %>
+
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <%- include("../partials/manager/sidemenu") %>
+
+  <div id="page-wrapper">
+    <div class="container">
+      <div class="col-lg-offset-4 col-lg-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-12 text-center">
+                <h2>Total restaurents : <%= r_list.length %></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center"><strong>All restaurant list</strong></h2>
+          <table class="table table-bordered table-striped table-hovered">
+            <tr>
+              <th>ID</th>
+              <th>Restaurant Name</th>
+              <th>Restaurant Location</th>
+              <th>Restaurant Details</th>
+              <th>Actoions</th>
+            </tr>
+            <% if(r_list.length !=null) { %>
+            <%  r_list.forEach((list) => { %>
+            <tr>
+              <td><%= list.r_id %></td>
+              <td><%= list.r_name %></td>
+              <td><%= list.r_location %></td>
+              <td><%= list.r_details %></td>
+
+              <td>
+                <a class="btn btn-success btn-sm" data-toggle="modal" href="#modal-add_item-<%=list.r_id%>">Add
+                  Menus</a>
+                <a class="btn btn-primary btn-sm" href="/home-manager/edit/<%=list.r_id%>">Edit Menus</a>
+                <a class="btn btn-warning btn-sm" data-toggle="modal" href="#modal-edit_retaurant-<%=list.r_id%>">Edit
+                  Restaurant</a>
+              </td>
+            </tr>
+            <!-- Modal For add item. -->
+            <div class="modal fade" id="modal-add_item-<%= list.r_id %>">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    <h4 class="modal-title">Add Item</h4>
+
+                  </div>
+                  <div class="modal-body">
+                    <div class="col-2"></div>
+                    <form action="/home-manager/add-item/<%=list.r_id%>" method="POST" class="form-horizontal"
+                      role="form">
+
+                      <div class="form-group">
+                        <label class="sr-only" for="">Item name</label>
+                        <input type="text" class="form-control" name="i_n" placeholder="Item name" required>
+                      </div>
+
+                      <div class="form-group">
+                        <textarea name="i_d" class="form-control" rows="3" placeholder="Enter item detail."
+                          required="required"></textarea>
+
+                      </div>
+
+                      <button type="submit" class="btn btn-primary">Add Item</button>
+                    </form>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Modal For edit restaurant. -->
+            <div class="modal fade" id="modal-edit_retaurant-<%=list.r_id%>">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    <h4 class="modal-title">Edit Restaurant</h4>
+
+                  </div>
+                  <div class="modal-body">
+                    <div class="col-2"></div>
+                    <form action="/home-manager/edit-restaurant/<%= list.r_id%>" method="POST" class="form-horizontal"
+                      role="form">
+
+                      <div class="form-group">
+                        <label class="sr-only" for="">Restaurant name</label>
+                        <input type="text" class="form-control" name="r_n" placeholder="Restaurant name" required
+                          value="<%= list.r_name%>">
+                      </div>
+
+                      <div class="form-group">
+                        <label class="sr-only" for="">Restaurant Location</label>
+                        <input type="text" class="form-control" name="r_loc" placeholder="Restaurant name" required
+                          value="<%= list.r_location%>">
+                      </div>
+
+                      <div class="form-group">
+                        <textarea name="r_d" class="form-control" rows="3" placeholder="Enter Restaurant detail."
+                          required="required"><%=list.r_details%></textarea>
+
+                      </div>
+
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% })
+            } else { %>
+            <h2>No data found!</h2>
+            <%  } %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include("../partials/manager/footer") %>

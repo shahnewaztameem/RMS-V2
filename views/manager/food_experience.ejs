@@ -1,0 +1,149 @@
+<%- include("../partials/manager/header") %>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/home-manager"> manager</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li><a href="/home-manager"><i class="fa fa-dashboard"></i> <strong>Dashboard</strong></a></li>
+                <li><a data-toggle="modal" href='/home-manager/user_list'><strong><i class="fa fa-user"></i> Members List</strong></a></li>
+                <li><a data-toggle="modal" href='/home-manager/add_users'><strong><i class="fa fa-plus"></i> Add a new user</strong></a></li>
+                <li><a href='/home-manager/add_restaurants'><strong><i class="fa fa-plus"></i>  Add Restaurant</strong></a></li>
+                <li> <a href='/home-manager/restaurants_list'><strong><i class="fa fa-list-alt"></i> Restaurants Lists</strong></a></li>
+                <li><a href='/home-manager/view-restaurant'><strong><i class="fa fa-home"></i> View Restaurants</strong></a></li>
+                <li><a href='/home-manager/all_reservations'><strong><i class="fa fa-list-alt"></i> View Reservations</strong></a></li>
+                <li><a href='/home-manager/food_experience'><strong><i class="fa fa-heart"></i> Food reviews</strong></a></li>
+                <li><a href='/home-manager/contact_list'><strong><i class="fa fa-envelope-o"></i> Contact list</strong></a></li>
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right navbar-user">
+
+                <li class="dropdown user-dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                        <%= u_name %> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    <li> <a href='/home-manager/manager-edit_account'>Edit Account</a></li>
+                    <li><a href="#"><a href='/logout'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <% if(fx_info.length != 0){%>
+                        <%for(var i=0;i< fx_info.length; i++){%>
+                        <tr>
+                            <td>
+                                <div id="first<%=i%>" class='panel panel-info'>
+                                    <div>
+                                        <h4><strong>
+                                                <%= fx_info[i].u_name%>
+                                            </strong></h4>
+                                        <h5>Review for<strong>
+                                                <%= fx_info[i].f_about%></strong> in
+                                            <strong>
+                                                <%= fx_info[i].r_location%>
+                                            </strong>
+                                        </h5>
+                                        <p class='text-primary' style='margin-left:5px;font-size:20px;'>
+                                            <%= fx_info[i].f_exp%>
+                                        </p>
+                                    </div>
+                                    <%if(u_type == 'admin'){%>
+                                    <a class="btn btn-danger pull-right"
+                                        href="/food-experience/delete/<%= fx_info[i].f_id%>">DELETE</a>
+                                </div>
+                                <%}}}else{%>
+                                <h2>Nothing to show</h2>
+                                <%}%>
+                                </td>
+                            </tr>
+        
+                            <tr>
+                                <td>
+                                    <% if(u_type != null) {%>
+
+                                <a data-toggle="modal" class="btn btn-default" href="#modal-add-experience">Add
+                                    Experience</a>
+
+                                <!-- Modal For add experience. -->
+                                <div class="modal fade" id="modal-add-experience">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+
+                                                <h4 class="modal-title">Add Food Experience</h4>
+
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-2"></div>
+                                                <form action="/food-experience" method="POST" class="form" role="form">
+
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="">Experience About</label>
+                                                        <input type="text" class="form-control" name="f_about"
+                                                            placeholder="What you write about?" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="">Location</label>
+                                                        <input type="text" class="form-control" name="r_loc"
+                                                            placeholder="Location of the restaurant" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <textarea name="f_exp" class="form-control" rows="3"
+                                                            placeholder="Enter your experience in detail."
+                                                            required></textarea>
+
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">Review</button>
+                                                </form>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <% if(u_type == 'Admin'){%>
+
+                                <%}else{%>
+
+                                <%}}else{%>
+
+                                <%}%>
+                                </td>
+                            </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("../partials/manager/footer") %>

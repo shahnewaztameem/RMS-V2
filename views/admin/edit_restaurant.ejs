@@ -1,0 +1,108 @@
+<%- include("../partials/admin/header") %>
+
+<div id="wrapper">
+
+<!-- Sidebar -->
+<%- include("../partials/admin/sidemenu") %>
+
+<div id="page-wrapper">
+<div class="container">
+<div class="row">
+    <div class="col-md-offset-3 col-md-6">
+        <div class="col-sm-12">
+            <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
+            <p>
+                <%=errors[i].msg%>
+            </p>
+            <%}}%>
+        </div>
+        <h2 class="text-center"><strong>Edit Menus</strong></h2>
+        <form>
+            <div class="form-group">
+                <%for(var i=0;i < i_info.length;i++){%>
+                <textarea class="form-control" type="text" id="detail1" name="about<%=i+1%>" rows="2"
+                    placeholder="About item" readonly required
+                    style="margin-bottom:10px;margin-top: 10px;"><%= i_info[i].i_detail%></textarea>
+
+                <input autocomplete="off" class="input form-control" id="field1" name="item<%=i+1%>"
+                    type="text" required readonly placeholder="Item name" value="<%= i_info[i].i_name%>"
+                    style="margin-bottom:10px;">
+                <a class="btn btn-primary btn-sm" data-toggle="modal"
+                    href="#modal-edit-<%=i_info[i].i_id%>">Edit </a> <a data-toggle="modal"
+                    href="#modal-delete-<%=i_info[i].i_id%>" class="btn btn-danger btn-sm">Delete</a>
+                <br>
+
+
+                <!-- Modal For edit. -->
+                <div class="modal fade" id="modal-edit-<%=i_info[i].i_id%>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
+
+                                <h4 class="modal-title">Edit Item</h4>
+
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-2"></div>
+                                <form action="/home-admin/edit-item/<%= i_info[i].i_id%>" method="POST"
+                                    class="form-horizontal" role="form">
+
+                                    <div class="form-group">
+                                        <label class="sr-only" for="">Item name</label>
+                                        <input type="text" class="form-control" name="i_n"
+                                            placeholder="Item name" required value="<%= i_info[i].i_name%>">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <textarea name="i_d" class="form-control" rows="3"
+                                            placeholder="Enter item detail."
+                                            required="required"><%=i_info[i].i_detail%></textarea>
+
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal For alert while deleting. -->
+                <div class="modal fade" id="modal-delete-<%=i_info[i].i_id%>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
+
+                                <h4 class="modal-title">Warning</h4>
+
+                            </div>
+                            <div class="modal-body">
+                                <span class="h3" style="color:darkred">Do you want to delete?</span><br>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-danger" style="width:20%"
+                                    href="/home-admin/delete-item/<%=i_info[i].i_id%>">Delete</a>
+                                <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+<%- include("../partials/admin/footer") %>

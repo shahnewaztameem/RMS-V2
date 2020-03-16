@@ -1,0 +1,33 @@
+<%- include ("partials/header") %>
+
+<header class="reservation-img">
+	<%- include ("partials/navbar")%>
+
+	<div class="hero-section clearfix">
+	<h1 class="text-center">Menu</h1>
+	</div>
+	</header>
+	<section class="menu">
+		<div class="container">
+			<div class="row">
+				<h2 class="text-center" style="color: #555;">Check all out menus</h2>
+				<table class="table table-bordered table-striped">
+					<tr>
+						<th>Item name</th>
+						<th>Item Details</th>
+					</tr>
+					<% if(menu_info.length != null){ for(var i =0; i < menu_info.length; i++){ %>
+						<tr>
+							<td><%= menu_info[i].i_name %></td>
+							<td><%= menu_info[i].i_detail %></td>
+						</tr>
+								
+						
+					<% } } else {%>
+						<h4 class="bg-danger text-danger"> No data found</h4>
+						<%}%>
+				</table>
+			</div>
+		</div>
+	</section>
+<%- include ("partials/footer") %>

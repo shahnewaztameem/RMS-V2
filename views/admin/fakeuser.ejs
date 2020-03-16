@@ -1,0 +1,119 @@
+<%- include("../partials/admin/header") %>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include("../partials/admin/sidemenu") %>
+
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-md-12 text-center" style="color: red; font-size: 20px;">
+                    <%if(errors != null){ for(var i=0; i< errors.length; i++){%>
+                    <p>
+                        <%=errors[i].msg%>
+                    </p>
+                    <%}} %>
+                    </div>
+                    
+                    <h1 class="text-center">
+                        Add a new user
+                    </h1>
+                    <h2 class="text-center"></h2>
+                    <div class="col-md-offset-3 col-md-6">
+                        <form action="/home-admin/add_users" method="POST">
+                            <table class="table table-bordered table-stripped table-hover text-center">
+                                <tr>
+                                    <td>
+                                        <h4><strong>Username</strong></h4>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="username" placeholder="Enter username"
+                                            class="form-control" value="<%= user_name%>">
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4><strong>First name</strong></h4>
+                        </td>
+                        <td>
+                            <input type="text" name="firstname" placeholder="Enter firstname" class="form-control"
+                                value="<%= firstname %>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4><strong>Last name</strong></h4>
+                        </td>
+                        <td>
+                            <input type="text" name="lastname" placeholder="Enter lastname" class="form-control"
+                                value="<%= lastname %>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4><strong>Email</strong></h4>
+                        </td>
+                        <td>
+                            <input type="email" name="email" placeholder="Enter email" class="form-control"
+                                value="<%= email %>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4><strong>User Type:</strong></h4>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <select name="user_type" class="form-control">
+                                    <option value="admin">Admin</option>
+                                    <option value="manager">Manager</option>
+                                    <option value="member">Member</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4><strong>Password</strong></h4>
+                        </td>
+                        <td>
+                            <input type="password" name="password" placeholder="Enter password" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4><strong>Confirm Password</strong></h4>
+                        </td>
+                        <td>
+                            <input type="password" name="confirm_pass" placeholder="Enter password again"
+                                class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4><strong>gender</strong></h4>
+                        </td>
+                        <td>
+                            <select name="u_gender" class="form-control">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"> <button class="btn btn-primary" type="submit" name="signup">Register a new
+                                user</button></td>
+                    </tr>
+                    </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<%- include("../partials/admin/footer") %>

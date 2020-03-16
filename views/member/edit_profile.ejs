@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>member edit profile</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+
+  <!-- Add custom CSS here -->
+  <link href="/css/sb-admin.css" rel="stylesheet">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+
+  
+    <div class="nav-wrapper clearfix">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+
+
+
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="images/nav-logo.png" alt=""></a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/home-member">home</a></li>
+              <li><a href="/menu">menu</a></li>
+              <li><a href="/reservation">reservation</a></li>
+              <li><a href='/food-experience'>Food Experience</a></li>
+              <li><a href="/about">about</a></li>
+              <li><a href="/contact">contact</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              <li> <a href='/pic'>upload picture</a></li>
+
+              <ul class="nav navbar-nav navbar-right navbar-user">
+
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                            <%= username %> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><a href='/logout'><span class="glyphicon glyphicon-log-out"></span>
+                                        Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+              
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    </div>
+
+
+
+  
+  <div id="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <h3 class="text-center">Edit Account!</h3>
+        <form action="" method="POST">
+          <table class="table table-bordered table-stripped table-hover text-center">
+            <div class="form-group">
+
+               
+
+              <tr>
+                <td>
+                  <h4><strong>Username</strong></h4>
+                </td>
+                <td>
+                  <input type="text" class="form-control" value="<%= user_info.username%>" disabled>
+                </td>
+              </tr>
+            </div>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>First name</strong></h4>
+              </td>
+              <td>
+                <input type="text" name="firstname" id="" value="<%= user_info.user_firstname%>" class="form-control">
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>Last name</strong></h4>
+              </td>
+              <td>
+                <input type="text" name="lastname" id="" value="<%= user_info.user_lastname%>" class="form-control">
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>Email</strong></h4>
+              </td>
+              <td>
+                <input type="email" name="email" id="" value="<%= user_info.user_email%>" class="form-control">
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>User Role:</strong></h4>
+              </td>
+              <td>
+                <select name="user_type" id="" class="form-control" disabled>
+                  <option value="member">member</option>
+                  <option value="admin">Admin</option>
+                  
+                </select>
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>Gender</strong></h4>
+              </td>
+              <td>
+                <select name="u_gender" id="" class="form-control">
+                  <option value="male">male</option>
+                  <option value="female">female</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4><strong>Password</strong></h4>
+              </td>
+              <td>
+                <input type="password" name="password" id="" class="form-control">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <input type="submit" class="btn btn-success" name="signup" style="width: 40%;" value="Update">
+                <li><a href="/home-member">back to home</a></li>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- JavaScript -->
+  <script src="/js/jquery-1.10.2.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+</body>
+
+</html>

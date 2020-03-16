@@ -1,0 +1,93 @@
+<%- include("../partials/admin/header") %>
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <%- include("../partials/admin/sidemenu") %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <h3 class="text-center">Edit Account!</h3>
+      <form action="" method="POST">
+        <table class="table table-bordered table-stripped table-hover text-center">
+          <div class="form-group">
+            <tr>
+              <td>
+                <h4><strong>Username</strong></h4>
+              </td>
+              <td>
+                <input type="text" class="form-control" value="<%= user_info.username%>" disabled>
+              </td>
+            </tr>
+          </div>
+          </tr>
+          <tr>
+            <td>
+              <h4><strong>First name</strong></h4>
+            </td>
+            <td>
+              <input type="text" name="firstname" id="" value="<%= user_info.user_firstname%>" class="form-control">
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4><strong>Last name</strong></h4>
+            </td>
+            <td>
+              <input type="text" name="lastname" id="" value="<%= user_info.user_lastname%>" class="form-control">
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4><strong>Email</strong></h4>
+            </td>
+            <td>
+              <input type="email" name="email" id="" value="<%= user_info.user_email%>" class="form-control">
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4><strong>User Role:</strong></h4>
+            </td>
+            <td>
+              <select name="user_type" id="" class="form-control" disabled>
+                <option value="admin">Admin</option>
+                <option value="manager">Manager</option>
+                <option value="member">member</option>
+              </select>
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4><strong>Gender</strong></h4>
+            </td>
+            <td>
+              <select name="u_gender" id="" class="form-control">
+                <option value="male">male</option>
+                <option value="female">female</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4><strong>Password</strong></h4>
+            </td>
+            <td>
+              <input type="password" name="password" id="" class="form-control" required>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="submit" class="btn btn-success" name="signup" style="width: 40%;" value="Update">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include("../partials/admin/footer") %>

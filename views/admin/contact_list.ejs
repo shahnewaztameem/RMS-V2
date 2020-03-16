@@ -1,0 +1,64 @@
+<%- include("../partials/admin/header") %>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <%- include("../partials/admin/sidemenu") %>
+  <div id="page-wrapper">
+    <!-- panels   -->
+    <div class="container">
+      <div class="row">
+        <h2 class="text-center">Contact emails from contacts</h2>
+        <div class="col-md-offset-3 col-md-6">
+          <table class="table table-bordered table-striped">
+            <tr>
+              <th>Id</th>
+              <th>Email</th>
+              <th>Message</th>
+              <th>Action</th>
+            </tr>
+            <% if(user_info.length > 0) { %>
+            <% for(var i = 0; i < user_info.length; i++){ %>
+
+            <tr>
+              <td><%= user_info[i].id %></td>
+              <td><%= user_info[i].email %></td>
+              <td><%= user_info[i].message %></td>
+
+              <td><a data-toggle="modal" href="#messageDeleteModal<%=user_info[i].id%>" class="btn btn-danger btn-sm"
+                  style="margin-top:10px">Delete</a></td>
+            </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="messageDeleteModal<%=user_info[i].id%>" tabindex="-1" role="dialog"
+              aria-labelledby="messageDeleteModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="messageDeleteModalLabel">Delete Confirmation!</h4>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure you want to delete?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a type="button" class="btn btn-danger"
+                      href="/home-admin/deleteMessage/<%=user_info[i].id%>">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <% }  }else {%>
+            <tr>
+              <td colspan="4" class="text-center">
+                <h2 class="text-danger">No data found!</h2>
+              </td>
+            </tr><%} %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("../partials/admin/footer") %>
